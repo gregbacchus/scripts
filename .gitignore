@@ -1,0 +1,12 @@
+.env*
+.idea/
+.npmrc
+*.d.ts
+*.log
+*.map
+*.suo
+/_*
+/certs/
+/dist/
+coverage/
+node_modules/

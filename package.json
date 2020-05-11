@@ -1,0 +1,34 @@
+{
+  "name": "shell-scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./src/index.ts",
+  "scripts": {
+    "test": "./node_modules/.bin/jest --coverage --verbose --runInBand",
+    "build": "rm -rf dist && ./node_modules/.bin/tsc --outDir dist --sourceMap",
+    "lint": "./node_modules/.bin/eslint src/ --ext .ts,.tsx",
+    "start": "node -r ts-node/register src/index.ts",
+    "watch": "./node_modules/.bin/nodemon"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^13.13.5",
+    "@typescript-eslint/eslint-plugin": "^2.32.0",
+    "@typescript-eslint/parser": "^2.32.0",
+    "eslint": "^7.0.0",
+    "eslint-plugin-prefer-arrow": "^1.2.1",
+    "jest": "^26.0.1",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@geeebe/api": "^1.0.51",
+    "@geeebe/common": "^1.0.75",
+    "@geeebe/logging": "^1.0.25",
+    "@geeebe/service": "^1.0.52",
+    "envalid": "^6.0.1"
+  }
+}
