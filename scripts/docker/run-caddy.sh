@@ -8,6 +8,7 @@ docker run \
   --name caddy \
   -d \
   --restart always \
+  --network private \
   -p 80:80 -p 443:443 -p 2019:2019 \
   -v caddy_data:/data \
   -v caddy_config:/config \
