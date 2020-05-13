@@ -19,9 +19,13 @@ sudo apt-get install -y \
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
+OS_RELEASE=$(lsb_release -cs)
+# HACK until focal is supported
+[[ "$OS_RELEASE" == 'focal' ]] && OS_RELEASE=eoan
+
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
+   $OS_RELEASE \
    stable"
 
 sudo apt-get update
