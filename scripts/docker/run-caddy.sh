@@ -12,4 +12,4 @@ docker run \
   -v caddy_data:/data \
   -v caddy_config:/config \
   caddy:alpine \
-  caddy run
+  caddy run --resume
