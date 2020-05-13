@@ -1,3 +1,6 @@
+docker stop scripts || :
+docker rm scripts || :
+
 docker run \
   --name scripts \
   -d \

@@ -1,6 +1,9 @@
 docker volume create caddy_data
 docker volume create caddy_config
 
+docker stop caddy || :
+docker rm caddy || :
+
 docker run \
   --name caddy \
   -d \
