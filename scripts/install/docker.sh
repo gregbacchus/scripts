@@ -1,6 +1,6 @@
-source /etc/os-release
+set -e
 
-echo "$ID $ID_LIKE"
+source /etc/os-release
 
 if [[ ! "$ID $ID_LIKE" =~ .*ubuntu.* ]]; then
   echo 'THis script is for ubuntu based OSs only'
@@ -37,3 +37,6 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 }
 EOF
 
+sudo usermod -aG docker $USER
+
+echo "Docker installed"
