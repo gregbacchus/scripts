@@ -1,1 +1,1 @@
-git branch --merged | grep -v '(^\*|master|dev)' | xargs git branch -d
+git branch --merged |  grep -v '^\*' | grep -v 'master' | xargs git branch -d
