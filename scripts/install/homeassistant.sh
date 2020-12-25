@@ -1,13 +1,16 @@
 set -e
 
-docker pull homeassistant/home-assistant:stable
+sudo mkdir -p /data/homeassistant
 
-docker stop home-assistant || :
-docker rm home-assistant || :
+sudo docker pull homeassistant/home-assistant:stable
 
-docker run -d --name="home-assistant" \
-  -v /data/home-assistant:/config \
+sudo docker stop homeassistant || :
+sudo docker rm homeassistant || :
+
+sudo docker run -d --name=homeassistant \
+  -v /data/homeassistant:/config \
   -v /etc/localtime:/etc/localtime:ro \
+  --device="/dev/ttyUSB0" \
   --restart=always \
   --net=host \
   homeassistant/home-assistant:stable
