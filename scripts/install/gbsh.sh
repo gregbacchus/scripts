@@ -2,7 +2,7 @@ set -e
 
 mkdir -p ~/bin/
 
-printf '#!/usr/bin/env sh\n\ncurl -sL https://sh.geee.be/$1/$2 | bash' > ~/bin/gbsh
+printf '#!/usr/bin/env sh\n\ncurl -fsSL https://sh.geee.be/$1/$2 | bash' > ~/bin/gbsh
 chmod +x ~/bin/gbsh
 
-[ ! `which gbsh` ] && printf 'Please add ~/bin to your PATH:\nexport PATH=$PATH:~/bin' || echo 'Installed. Usage: gbsh <section> <script>'
+[ ! `which gbsh` ] && printf 'Please add ~/bin to your PATH:\nexport PATH=$PATH:~/bin\n' || echo 'Installed. Usage: gbsh <section> <script>'
