@@ -27,11 +27,20 @@ export class ScriptApi extends ControllerApi<ScriptController> {
   }
 
   protected mountRoutes(): void {
+    this.get('', this.help);
     this.get('/:section/:script', this.withController(this.getDevice));
   }
 
+  private help = async (ctx: ApiContext): Promise<void> => {
+    ctx.body = 'curl -fsSL https://sh.geee.be/install/gbsh | bash';
+    const html = acceptHtml(ctx);
+    ctx.type = html ? 'text/html' : 'text/plain';
+    ctx.status = Statuses.OK;
+    return Promise.resolve();
+  }
+
   private getDevice = async (controller: ScriptController, ctx: ApiContext): Promise<void> => {
-    const { section, script } = ctx.params;
+    const { section, script } = ctx.params as Record<string, string>;
     const html = acceptHtml(ctx);
 
     if (!VALID_NAME.test(section) || !VALID_NAME.test(script)) {

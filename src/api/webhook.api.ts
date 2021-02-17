@@ -22,7 +22,7 @@ export class WebhookApi extends ControllerApi<WebhookController> {
   }
 
   private updateScripts = async (controller: WebhookController, ctx: ApiContext): Promise<void> => {
-    const { webhook } = ctx.params;
+    const { webhook } = ctx.params as Record<string, string>;
     if (webhook !== env.WEBHOOK_RANDOM) return;
 
     try {

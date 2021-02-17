@@ -1,16 +1,21 @@
-docker volume create caddy_data
-docker volume create caddy_config
+set -e
 
-docker stop caddy || :
-docker rm caddy || :
+sudo docker volume create caddy_data
+sudo docker volume create caddy_config
 
-docker run \
+sudo docker stop caddy || :
+sudo docker rm caddy || :
+
+sudo mkdir -p /etc/caddy
+sudo touch /etc/caddy/Caddyfile
+
+sudo docker run \
   --name caddy \
   -d \
   --restart always \
-  --network private \
-  -p 80:80 -p 443:443 -p 2019:2019 \
+  --network host \
+  -v /etc/caddy/Caddyfile:/etc/caddy/Caddyfile \
   -v caddy_data:/data \
   -v caddy_config:/config \
   caddy:alpine \
-  caddy run --resume
+  caddy run --config /etc/caddy/Caddyfile

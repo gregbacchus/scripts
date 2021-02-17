@@ -5,7 +5,6 @@ import { env } from './util/env';
 import { childLogger } from './util/logger';
 
 const logger = childLogger('app');
-const { error } = logger;
 
 const main = async (): Promise<void> => {
   let stopping = false;
@@ -32,4 +31,4 @@ const main = async (): Promise<void> => {
   await monitoring.start();
 };
 
-main().catch(error);
+main().catch((err) => logger.error(err));

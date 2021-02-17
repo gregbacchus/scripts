@@ -1,3 +1,4 @@
+import { ExtraContext } from '@geeebe/api';
 import { Logger } from '@geeebe/logging';
 import { KoaService, ServiceOptions } from '@geeebe/service';
 import { resolve } from 'path';
@@ -23,7 +24,7 @@ export class Service extends KoaService<ServiceOptions> {
   }
 
   protected mountApi(router: Router): void {
-    new ScriptApi({ scriptDirectory: resolve(__dirname, '../scripts') }).mount(router);
-    new WebhookApi().mount(router);
+    new ScriptApi({ scriptDirectory: resolve(__dirname, '../scripts') }).mount(router as unknown as Router<any, ExtraContext>);
+    new WebhookApi().mount(router as unknown as Router<any, ExtraContext>);
   }
 }
