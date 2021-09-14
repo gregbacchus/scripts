@@ -5,7 +5,11 @@ sudo docker volume create mosquitto_data
 sudo docker pull eclipse-mosquitto
 
 sudo mkdir -p /etc/mosquitto
-sudo touch /etc/mosquitto/mosquitto.conf
+cat <<EOF | sudo tee /etc/mosquitto/mosquitto.conf
+persistence true
+persistence_location /mosquitto/data/
+log_dest stdout
+EOF
 
 sudo docker stop mosquitto || :
 sudo docker rm mosquitto || :
@@ -15,6 +19,5 @@ sudo docker run --name=mosquitto \
   --restart always \
   -v mosquitto_data:/mosquitto/data \
   -v /etc/mosquitto:/mosquitto/config \
-  -v /var/log/mosquitto/logs \
   --net=host \
   eclipse-mosquitto
