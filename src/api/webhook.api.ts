@@ -22,14 +22,14 @@ export class WebhookApi extends ControllerApi<WebhookController> {
   }
 
   private updateScripts = async (controller: WebhookController, ctx: ApiContext): Promise<void> => {
-    const { webhook } = ctx.params as Record<string, string>;
+    const { webhook } = ctx.params;
     if (webhook !== env.WEBHOOK_RANDOM) return;
 
     try {
       await controller.updateScripts();
       ctx.status = Statuses.OK;
     } catch (err) {
-      log.error(err);
+      log.error(err as Error);
       ctx.status = Statuses.SERVER_ERROR;
     }
 
