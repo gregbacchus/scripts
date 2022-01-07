@@ -23,7 +23,7 @@ function cf_exec {
 
 [[ ! -f /etc/cloudflared/cert.pem ]] && cf_login || :
 
-[[ ! -z "$*" ]] && echo "cloudflared tunnel $@" && cf_exec $@ ; exit 0
+[[ ! -z "$*" ]] && echo "cloudflared tunnel $@" && cf_exec $@ && exit 0
 
 sudo docker stop cloudflared || :
 sudo docker rm cloudflared || :
