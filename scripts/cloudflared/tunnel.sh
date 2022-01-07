@@ -5,7 +5,7 @@ sudo chown -R 65532:root /etc/cloudflared
 
 function cf_login {
   sudo docker run \
-    -it --rm \
+    --rm \
     --network host \
     -v /etc/cloudflared:/home/nonroot/.cloudflared \
     cloudflare/cloudflared:2022.1.0 \
@@ -14,7 +14,7 @@ function cf_login {
 
 function cf_exec {
   sudo docker run \
-    -it --rm \
+    --rm \
     --network host \
     -v /etc/cloudflared:/home/nonroot/.cloudflared \
     cloudflare/cloudflared:2022.1.0 \
