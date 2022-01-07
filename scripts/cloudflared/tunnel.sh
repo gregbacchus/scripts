@@ -18,7 +18,7 @@ function cf_exec {
     --network host \
     -v /etc/cloudflared:/home/nonroot/.cloudflared \
     cloudflare/cloudflared:2022.1.0 \
-    $@
+    tunnel $@
 }
 
 [[ ! -f /etc/cloudflared/cert.pem ]] && cf_login || :
