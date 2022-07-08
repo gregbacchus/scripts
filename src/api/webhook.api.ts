@@ -1,15 +1,14 @@
 import { ApiContext, ControllerApi } from '@geeebe/api';
 import { Statuses } from '@geeebe/common';
+import * as Router from '@koa/router';
 import { env } from '../util/env';
 import { childLogger } from '../util/logger';
 import { WebhookController } from './webhook.controller';
 
-import Router = require('koa-router');
-
 const log = childLogger('webhook.api');
 
 export class WebhookApi extends ControllerApi<WebhookController> {
-  constructor(options?: Router.IRouterOptions) {
+  constructor(options?: Router.RouterOptions) {
     super('/.webhook/:webhook', options);
   }
 

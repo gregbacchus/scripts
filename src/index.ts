@@ -1,5 +1,6 @@
+import { MonitoringService } from '@geeebe/api';
 import { Time } from '@geeebe/common';
-import { graceful, MonitorService } from '@geeebe/service';
+import { graceful } from '@geeebe/service';
 import { Service } from './service';
 import { env } from './util/env';
 import { childLogger } from './util/logger';
@@ -10,7 +11,7 @@ const main = async (): Promise<void> => {
   let stopping = false;
   const service = Service.for(logger);
 
-  const monitoring = new MonitorService({
+  const monitoring = new MonitoringService({
     isReady: () => Promise.resolve(!stopping),
     logger,
     port: env.MONITORING_PORT,

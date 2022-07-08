@@ -1,10 +1,9 @@
 import { ApiContext, ControllerApi } from '@geeebe/api';
 import { Statuses } from '@geeebe/common';
+import * as Router from '@koa/router';
 import { ScriptController } from './script.controller';
 
-import Router = require('koa-router');
-
-export interface Options extends Router.IRouterOptions {
+export interface Options extends Router.RouterOptions {
   scriptDirectory: string;
 }
 
@@ -40,7 +39,7 @@ export class ScriptApi extends ControllerApi<ScriptController> {
   }
 
   private getDevice = async (controller: ScriptController, ctx: ApiContext): Promise<void> => {
-    const { section, script } = ctx.params as Record<string, string>;
+    const { section, script } = ctx.params;
     const html = acceptHtml(ctx);
 
     if (!VALID_NAME.test(section) || !VALID_NAME.test(script)) {
