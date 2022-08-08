@@ -1,4 +1,7 @@
+import { config } from 'dotenv';
 import { bool, cleanEnv, port, str } from 'envalid';
+
+config();
 
 // make sure all required env vars are present
 export const env = cleanEnv(process.env, {
