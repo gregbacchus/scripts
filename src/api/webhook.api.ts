@@ -33,5 +33,5 @@ export class WebhookApi extends ControllerApi<WebhookController> {
     }
 
     return Promise.resolve();
-  }
+  };
 }

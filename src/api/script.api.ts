@@ -36,7 +36,7 @@ export class ScriptApi extends ControllerApi<ScriptController> {
     ctx.type = html ? 'text/html' : 'text/plain';
     ctx.status = Statuses.OK;
     return Promise.resolve();
-  }
+  };
 
   private getDevice = async (controller: ScriptController, ctx: ApiContext): Promise<void> => {
     const { section, script } = ctx.params;
@@ -66,5 +66,5 @@ export class ScriptApi extends ControllerApi<ScriptController> {
     ctx.type = html ? 'text/html' : 'text/plain';
     ctx.status = Statuses.OK;
     return Promise.resolve();
-  }
+  };
 }
