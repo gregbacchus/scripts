@@ -2,6 +2,13 @@ To run
 
 ```bash
 docker run \
+  --rm \
+  --volume "/data/src/scripts:/src" \
+  --workdir "/src" \
+  node:14-buster \
+  npm ci
+
+docker run \
   --name "scripts" \
   --volume "/data/src/scripts:/src" \
   --workdir "/src" \
