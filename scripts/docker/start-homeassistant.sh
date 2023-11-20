@@ -12,6 +12,8 @@ sudo docker run --name homeassistant \
   --restart always \
   -v /data/homeassistant:/config \
   -v /etc/localtime:/etc/localtime:ro \
+  --device /dev/ttyUSB0:/dev/ttyUSB0 \
+  --device /dev/ttyUSB1:/dev/ttyUSB1 \
   -e TZ=Pacific/Auckland \
   --net host \
   ghcr.io/home-assistant/home-assistant:stable
